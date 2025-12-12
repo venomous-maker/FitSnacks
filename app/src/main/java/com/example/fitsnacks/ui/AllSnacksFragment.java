@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.fitsnacks.R;
@@ -40,7 +41,13 @@ public class AllSnacksFragment extends Fragment {
                     .show();
         });
         list.setAdapter(adapter);
+        list.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
 
-        vm.allSnacks.observe(getViewLifecycleOwner(), adapter::setItems);
+        final View empty = view.findViewById(R.id.empty_all_snacks);
+        vm.allSnacks.observe(getViewLifecycleOwner(), snacks -> {
+            adapter.setItems(snacks);
+            boolean isEmpty = snacks == null || snacks.isEmpty();
+            if (empty != null) empty.setVisibility(isEmpty ? View.VISIBLE : View.GONE);
+        });
     }
 }
