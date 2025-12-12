@@ -5,39 +5,42 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:baselineAligned="false"
-    android:padding="12dp"
+    android:padding="16dp"
     android:background="?android:attr/selectableItemBackground">
 
-    <!-- Left content -->
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_food"
+        android:tint="@color/fit_green"
+        android:contentDescription="" />
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginStart="12dp">
 
         <TextView
             android:id="@+id/snack_name"
-            android:layout_width="0dp"
+            style="@style/TextAppearance.FitSnacks.Title.Medium"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
             android:text="@string/item_snack_name"
-            android:textStyle="bold"
-            android:textColor="@color/text_primary"
-            tools:ignore="Suspicious0dp" />
+            android:textColor="@color/text_primary" />
 
         <TextView
             android:id="@+id/snack_portion"
-            android:layout_width="0dp"
+            style="@style/TextAppearance.FitSnacks.Body.Medium"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="@string/item_snack_portion"
             android:textColor="@color/text_secondary"
-            android:layout_marginTop="2dp"
-            tools:ignore="Suspicious0dp" />
+            android:layout_marginTop="2dp" />
 
     </LinearLayout>
 
-    <!-- Right content -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,14 +49,15 @@
 
         <TextView
             android:id="@+id/snack_calories"
+            style="@style/TextAppearance.FitSnacks.Title.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/item_snack_calories"
-            android:textStyle="bold"
             android:textColor="@color/fit_green" />
 
         <TextView
             android:id="@+id/snack_time"
+            style="@style/TextAppearance.FitSnacks.Body.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/item_snack_date"
