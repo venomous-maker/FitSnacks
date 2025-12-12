@@ -11,9 +11,9 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.appbar.MaterialToolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.fitsnacks.R;
@@ -39,49 +39,7 @@ public class DashboardFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         vm = new ViewModelProvider(requireActivity()).get(DashboardViewModel.class);
 
-        // obtain drawer and nav once
-        // Setup toolbar (local variable)
-        final MaterialToolbar toolbar = view.findViewById(R.id.toolbar);
-        final DrawerLayout drawer = requireActivity().findViewById(R.id.drawer_layout);
-        toolbar.setNavigationOnClickListener(v -> {
-            if (drawer != null) drawer.openDrawer(GravityCompat.START);
-        });
-
-        // Setup navigation view listener (if present)
-        NavigationView nav = requireActivity().findViewById(R.id.nav_view);
-        if (nav != null) {
-            // set header email if possible
-            View header = nav.getHeaderView(0);
-            if (header != null) {
-                android.widget.TextView emailTv = header.findViewById(R.id.nav_header_email);
-                SharedPreferences auth = requireContext().getSharedPreferences("auth_prefs", Context.MODE_PRIVATE);
-                String email = auth.getString("auth_email", null);
-                emailTv.setText(email == null ? "guest" : email);
-            }
-            nav.setNavigationItemSelectedListener(menuItem -> {
-                int id = menuItem.getItemId();
-                if (id == R.id.nav_all_snacks) {
-                    requireActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.container, new AllSnacksFragment())
-                            .addToBackStack(null)
-                            .commit();
-                } else if (id == R.id.nav_settings) {
-                    requireActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.container, new SettingsFragment())
-                            .addToBackStack(null)
-                            .commit();
-                } else if (id == R.id.nav_sign_out) {
-                    SharedPreferences authPrefs = requireContext().getSharedPreferences("auth_prefs", Context.MODE_PRIVATE);
-                    authPrefs.edit().remove("auth_email").putBoolean("auth_logged_in", false).apply();
-                    vm.switchUser(null);
-                    requireActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.container, new com.example.fitsnacks.ui.LoginFragment())
-                            .commit();
-                }
-                if (drawer != null) drawer.closeDrawer(GravityCompat.START);
-                return true;
-            });
-        }
+        // toolbar and drawer wiring is handled by MainActivity to keep AppBar consistent across fragments
 
         caloriesEatenText = view.findViewById(R.id.calories_eaten);
         caloriesBurnedText = view.findViewById(R.id.calories_burned);
