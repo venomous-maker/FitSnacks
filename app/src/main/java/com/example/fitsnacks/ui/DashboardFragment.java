@@ -22,6 +22,7 @@ import com.example.fitsnacks.viewmodel.DashboardViewModel;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.view.GravityCompat;
+import com.google.android.material.snackbar.Snackbar;
 
 public class DashboardFragment extends Fragment {
     private TextView caloriesEatenText, caloriesBurnedText, netCaloriesText;
@@ -179,7 +180,19 @@ public class DashboardFragment extends Fragment {
         new MaterialAlertDialogBuilder(requireContext())
                 .setTitle(R.string.dialog_delete_title)
                 .setMessage("Delete " + snack.name + "?")
-                .setPositiveButton(R.string.dialog_delete_confirm, (dialog, which) -> vm.deleteSnack(snack.id))
+                .setPositiveButton(R.string.dialog_delete_confirm, (dialog, which) -> {
+                    // perform delete and offer undo via Snackbar
+                    final SnackEntry deleted = new SnackEntry(snack.name, snack.calories, snack.portion, snack.date);
+                    deleted.id = snack.id;
+                    vm.deleteSnack(snack.id);
+                    View root = requireActivity().findViewById(android.R.id.content);
+                    if (root == null) root = getView();
+                    if (root != null) {
+                        Snackbar.make(root, "Snack deleted", Snackbar.LENGTH_LONG)
+                                .setAction("Undo", v -> vm.insertSnack(deleted))
+                                .show();
+                    }
+                })
                 .setNegativeButton(R.string.dialog_cancel, null)
                 .show();
     }
@@ -211,9 +224,8 @@ public class DashboardFragment extends Fragment {
     }
 
     private void navigateToAddWorkout() {
-        // small placeholder fragment - reuse AddSnack for now or implement AddWorkoutFragment
         requireActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, new AddSnackFragment())
+                .replace(R.id.container, new AddWorkoutFragment())
                 .addToBackStack(null)
                 .commit();
     }
@@ -225,4 +237,3 @@ public class DashboardFragment extends Fragment {
                 .commit();
     }
 }
-
