@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary brand colors -->
+    <color name="fit_green">#FF00C853</color>
+    <color name="fit_green_light">#FF80E4A9</color>
+    <color name="fit_green_dark">#FF009624</color>
+
+    <color name="fit_orange">#FFFF6D00</color>
+    <color name="fit_orange_light">#FFFFB380</color>
+    <color name="fit_orange_dark">#FFCC5200</color>
+
+    <!-- Secondary colors -->
+    <color name="fit_teal">#FF00BFA5</color>
+    <color name="fit_teal_light">#FF80DFD2</color>
+
+    <!-- Gradient endpoints -->
+    <color name="fit_gradient_start">#FF00C853</color>
+    <color name="fit_gradient_end">#FFFF6D00</color>
+    <color name="fit_gradient_middle">#FF80DC76</color>
+
+    <!-- Neutrals -->
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="background_light">#FFF5F5F5</color>
+    <color name="surface_variant">#FFE0E0E0</color>
+    <color name="muted">#FF9E9E9E</color>
+
+    <!-- Surface colors -->
+    <color name="surface">#FFFFFFFF</color>
+    <color name="surface_dark">#FF1E1E1E</color>
+
+    <!-- Semantic colors -->
+    <color name="success">#FF4CAF50</color>
+    <color name="error">#FFF44336</color>
+    <color name="warning">#FFFF9800</color>
+    <color name="info">#FF2196F3</color>
+
+    <!-- Text colors -->
+    <color name="text_primary">#FF212121</color>
+    <color name="text_secondary">#FF757575</color>
+    <color name="text_tertiary">#FF9E9E9E</color>
+    <color name="text_on_gradient">#FFFFFFFF</color>
+
+    <!-- State colors -->
+    <color name="ripple_color">#1A000000</color>
+    <color name="divider_color">#1F000000</color>
+
+    <!-- Chart colors -->
+    <color name="chart_green">#FF00C853</color>
+    <color name="chart_orange">#FFFF6D00</color>
+    <color name="chart_blue">#FF2962FF</color>
+    <color name="chart_purple">#FFAA00FF</color>
+</resources>

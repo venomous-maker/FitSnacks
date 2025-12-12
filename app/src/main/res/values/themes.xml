@@ -1,0 +1,168 @@
+<resources>
+    <!-- Base theme -->
+    <style name="Base.Theme.FitSnacks" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand colors -->
+        <item name="colorPrimary">@color/fit_green</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/fit_green_light</item>
+        <item name="colorOnPrimaryContainer">@color/fit_green_dark</item>
+
+        <!-- Secondary brand colors -->
+        <item name="colorSecondary">@color/fit_orange</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/fit_orange_light</item>
+        <item name="colorOnSecondaryContainer">@color/fit_orange_dark</item>
+
+        <!-- Tertiary colors -->
+        <item name="colorTertiary">@color/fit_teal</item>
+        <item name="colorOnTertiary">@color/white</item>
+        <item name="colorTertiaryContainer">@color/fit_teal_light</item>
+
+        <!-- Surface colors -->
+        <item name="android:colorBackground">@color/background_light</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="colorSurfaceVariant">@color/surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/text_secondary</item>
+
+        <!-- Status bar -->
+        <item name="android:statusBarColor">@color/fit_gradient_start</item>
+
+        <!-- Navigation bar -->
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:navigationBarDividerColor">@color/muted</item>
+        <item name="android:windowLightNavigationBar">true</item>
+
+        <!-- Edge to edge -->
+        <!-- enforceNavigationBarContrast/enforceStatusBarContrast require API 29+; omitted for minSdk 28 -->
+
+        <!-- Typography -->
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.FitSnacks.Headline.Large</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.FitSnacks.Headline.Medium</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.FitSnacks.Title.Large</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.FitSnacks.Title.Medium</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.FitSnacks.Body.Large</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.FitSnacks.Body.Medium</item>
+
+        <!-- Button styles -->
+        <item name="materialButtonStyle">@style/Widget.FitSnacks.Button</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.FitSnacks.Button.Outlined</item>
+        <item name="android:buttonStyle">@style/Widget.FitSnacks.Button</item>
+
+
+        <!-- Shape appearance -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.FitSnacks.Small</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.FitSnacks.Medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.FitSnacks.Large</item>
+
+        <!-- Elevation -->
+        <item name="elevationLevel0">0dp</item>
+        <item name="elevationLevel1">4dp</item>
+        <item name="elevationLevel2">8dp</item>
+        <item name="elevationLevel3">12dp</item>
+
+        <!-- Custom styles -->
+        <item name="cardViewStyle">@style/CardView.FitSnacks</item>
+        <!-- Card view: use Material3's built-in elevated card style -->
+        <item name="materialCardViewStyle">@style/Widget.Material3.CardView.Elevated</item>
+    </style>
+
+    <style name="Theme.FitSnacks" parent="Base.Theme.FitSnacks" />
+
+    <style name="Theme.FitSnacks.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Text appearances -->
+    <style name="TextAppearance.FitSnacks.Headline.Large" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+
+    <style name="TextAppearance.FitSnacks.Headline.Medium" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.FitSnacks.Title.Large" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.FitSnacks.Title.Medium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontWeight">500</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearance.FitSnacks.Body.Large" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+    </style>
+
+    <style name="TextAppearance.FitSnacks.Body.Medium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+    </style>
+
+    <!-- Button styles -->
+    <style name="Widget.FitSnacks.Button" parent="Widget.Material3.Button">
+        <item name="android:minHeight">48dp</item>
+        <item name="android:minWidth">120dp</item>
+        <item name="cornerRadius">24dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.FitSnacks.Title.Medium</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+    </style>
+
+    <style name="Widget.FitSnacks.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:minHeight">48dp</item>
+        <item name="android:minWidth">120dp</item>
+        <item name="cornerRadius">24dp</item>
+        <item name="strokeColor">@color/fit_green</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="android:textColor">@color/fit_green</item>
+    </style>
+
+    <!-- Shape appearances -->
+    <style name="ShapeAppearance.FitSnacks.Small" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="ShapeAppearance.FitSnacks.Medium" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="ShapeAppearance.FitSnacks.Large" parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <!-- CardView style -->
+    <style name="CardView.FitSnacks" parent="CardView">
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">8dp</item>
+        <item name="cardUseCompatPadding">true</item>
+        <item name="cardBackgroundColor">@color/white</item>
+    </style>
+
+
+    <!-- Gradient Action Bar Style -->
+    <style name="Widget.FitSnacks.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@drawable/fit_gradient</item>
+        <item name="titleTextAppearance">@style/TextAppearance.FitSnacks.Title.Large</item>
+        <item name="subtitleTextAppearance">@style/TextAppearance.FitSnacks.Body.Medium</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="titleTextColor">@color/white</item>
+    </style>
+</resources>

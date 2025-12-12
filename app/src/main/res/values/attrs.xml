@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Custom elevation level attributes used by theme -->
+    <attr name="elevationLevel0" format="dimension" />
+    <attr name="elevationLevel1" format="dimension" />
+    <attr name="elevationLevel2" format="dimension" />
+    <attr name="elevationLevel3" format="dimension" />
+</resources>
+
