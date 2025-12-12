@@ -19,9 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.fitsnacks.R;
 import com.example.fitsnacks.data.SnackEntry;
 import com.example.fitsnacks.viewmodel.DashboardViewModel;
-import androidx.drawerlayout.widget.DrawerLayout;
-import com.google.android.material.navigation.NavigationView;
-import androidx.core.view.GravityCompat;
 import com.google.android.material.snackbar.Snackbar;
 
 public class DashboardFragment extends Fragment {
