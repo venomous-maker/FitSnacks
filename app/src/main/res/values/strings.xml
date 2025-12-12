@@ -62,4 +62,6 @@
     <string name="clear_accounts_button">Clear all accounts</string>
     <string name="action_settings">Settings</string>
     <string name="action_sign_out">Sign out</string>
+    <string name="empty_recent_snacks">No recent snacks — add your first snack</string>
+    <string name="empty_all_snacks">No snacks yet — add your first snack</string>
 </resources>
