@@ -49,6 +49,14 @@ public class DashboardFragment extends Fragment {
         // Setup navigation view listener (if present)
         NavigationView nav = requireActivity().findViewById(R.id.nav_view);
         if (nav != null) {
+            // set header email if possible
+            View header = nav.getHeaderView(0);
+            if (header != null) {
+                android.widget.TextView emailTv = header.findViewById(R.id.nav_header_email);
+                SharedPreferences auth = requireContext().getSharedPreferences("auth_prefs", Context.MODE_PRIVATE);
+                String email = auth.getString("auth_email", null);
+                emailTv.setText(email == null ? "guest" : email);
+            }
             nav.setNavigationItemSelectedListener(menuItem -> {
                 int id = menuItem.getItemId();
                 if (id == R.id.nav_all_snacks) {
@@ -62,8 +70,8 @@ public class DashboardFragment extends Fragment {
                             .addToBackStack(null)
                             .commit();
                 } else if (id == R.id.nav_sign_out) {
-                    SharedPreferences auth = requireContext().getSharedPreferences("auth_prefs", Context.MODE_PRIVATE);
-                    auth.edit().remove("auth_email").putBoolean("auth_logged_in", false).apply();
+                    SharedPreferences authPrefs = requireContext().getSharedPreferences("auth_prefs", Context.MODE_PRIVATE);
+                    authPrefs.edit().remove("auth_email").putBoolean("auth_logged_in", false).apply();
                     vm.switchUser(null);
                     requireActivity().getSupportFragmentManager().beginTransaction()
                             .replace(R.id.container, new com.example.fitsnacks.ui.LoginFragment())
@@ -91,7 +99,12 @@ public class DashboardFragment extends Fragment {
         View cardAddSnack = view.findViewById(R.id.card_add_snack);
         if (cardAddSnack != null) cardAddSnack.setOnClickListener(v -> navigateToAddSnack());
         View cardAddWorkout = view.findViewById(R.id.card_add_workout);
-        if (cardAddWorkout != null) cardAddWorkout.setOnClickListener(v -> navigateToAddWorkout());
+        if (cardAddWorkout != null) cardAddWorkout.setOnClickListener(v -> {
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container, new AddWorkoutFragment())
+                    .addToBackStack(null)
+                    .commit();
+        });
 
         // View All - navigate to full list
         View viewAll = view.findViewById(R.id.btn_view_all);
@@ -212,3 +225,4 @@ public class DashboardFragment extends Fragment {
                 .commit();
     }
 }
+
