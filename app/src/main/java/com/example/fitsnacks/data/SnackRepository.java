@@ -77,6 +77,13 @@ public class SnackRepository {
     }
 
     public void insert(final SnackEntry entry) {
+        insert(entry, null);
+    }
+
+    /**
+     * Insert snack and optionally receive the assigned id on the main thread via callback.
+     */
+    public void insert(final SnackEntry entry, @Nullable java.util.function.Consumer<Long> callback) {
         executor.execute(() -> {
             List<SnackEntry> current = snacksLive.getValue();
             if (current == null) current = new ArrayList<>();
@@ -88,6 +95,10 @@ public class SnackRepository {
             saveToPrefs(current);
             snacksLive.postValue(Collections.unmodifiableList(new ArrayList<>(current)));
             totalCaloriesLive.postValue(calculateTotal(current));
+            if (callback != null) {
+                // post callback on main thread
+                new android.os.Handler(android.os.Looper.getMainLooper()).post(() -> callback.accept(entry.id));
+            }
         });
     }
 
