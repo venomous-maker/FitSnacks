@@ -92,6 +92,8 @@ public class DashboardFragment extends Fragment {
         final SnackListAdapter adapter = new SnackListAdapter(this::showDeleteDialog);
         adapter.setMaxItems(5); // show only 5 recent snacks on dashboard
         historyList.setAdapter(adapter);
+        // add simple divider between items
+        historyList.addItemDecoration(new androidx.recyclerview.widget.DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
 
         // Set click listener for calories burned
         view.findViewById(R.id.calories_burned).setOnClickListener(v -> showCaloriesBurnedDialog());
@@ -124,9 +126,12 @@ public class DashboardFragment extends Fragment {
             updateNetCalories();
         });
 
-        // Update list when snacks change
+        // Update list when snacks change; show empty-state when list is empty
+        final View emptyRecent = view.findViewById(R.id.empty_recent);
         vm.allSnacks.observe(getViewLifecycleOwner(), list -> {
             adapter.setItems(list);
+            boolean isEmpty = list == null || list.isEmpty();
+            if (emptyRecent != null) emptyRecent.setVisibility(isEmpty ? View.VISIBLE : View.GONE);
         });
 
         // FAB
