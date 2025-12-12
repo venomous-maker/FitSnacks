@@ -9,7 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.fitsnacks.data.SnackEntry;
 import com.example.fitsnacks.data.SnackRepository;
 import java.util.List;
-import java.util.function.Consumer;
+import com.example.fitsnacks.util.Callback;
 
 public class DashboardViewModel extends AndroidViewModel {
     private final SnackRepository repo;
@@ -36,7 +36,7 @@ public class DashboardViewModel extends AndroidViewModel {
         repo.insert(entry);
     }
 
-    public void insertSnack(SnackEntry entry, @Nullable Consumer<Long> onComplete) {
+    public void insertSnack(SnackEntry entry, @Nullable Callback<Long> onComplete) {
         repo.insert(entry, onComplete);
     }
 
