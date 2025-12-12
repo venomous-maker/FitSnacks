@@ -8,6 +8,7 @@
     android:background="@drawable/fit_gradient">
 
     <TextView
+        android:id="@+id/nav_header_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="FitSnacks"
@@ -16,11 +17,20 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/nav_header_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Track your fitness journey"
         android:textColor="@color/text_on_gradient"
         android:textSize="12sp" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/nav_header_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="guest"
+        android:textColor="@color/text_on_gradient"
+        android:textSize="14sp"
+        android:layout_marginTop="8dp" />
 
+</LinearLayout>
