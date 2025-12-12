@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.fitsnacks.R;
 import com.example.fitsnacks.data.SnackEntry;
 import com.example.fitsnacks.viewmodel.DashboardViewModel;
+import com.google.android.material.snackbar.Snackbar;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -84,7 +85,16 @@ public class AddSnackFragment extends Fragment {
             }
 
             SnackEntry entry = new SnackEntry(name, calories, portion, date);
-            vm.insertSnack(entry);
+            // insert with callback to receive assigned id
+            vm.insertSnack(entry, id -> {
+                // Show Snackbar with Undo
+                View root = requireActivity().findViewById(android.R.id.content);
+                if (root == null) root = view;
+                Snackbar.make(root, "Snack saved", Snackbar.LENGTH_LONG)
+                        .setAction("Undo", undoV -> vm.deleteSnack(id))
+                        .show();
+            });
+
             Toast.makeText(getContext(), "Snack saved", Toast.LENGTH_SHORT).show();
             requireActivity().getSupportFragmentManager().popBackStack();
         });
