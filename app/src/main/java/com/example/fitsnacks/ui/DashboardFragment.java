@@ -38,11 +38,11 @@ public class DashboardFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         vm = new ViewModelProvider(requireActivity()).get(DashboardViewModel.class);
 
+        // obtain drawer and nav once
         // Setup toolbar (local variable)
         final MaterialToolbar toolbar = view.findViewById(R.id.toolbar);
+        final DrawerLayout drawer = requireActivity().findViewById(R.id.drawer_layout);
         toolbar.setNavigationOnClickListener(v -> {
-            // open drawer in host activity
-            DrawerLayout drawer = requireActivity().findViewById(R.id.drawer_layout);
             if (drawer != null) drawer.openDrawer(GravityCompat.START);
         });
 
@@ -69,8 +69,7 @@ public class DashboardFragment extends Fragment {
                             .replace(R.id.container, new com.example.fitsnacks.ui.LoginFragment())
                             .commit();
                 }
-                DrawerLayout d = requireActivity().findViewById(R.id.drawer_layout);
-                if (d != null) d.closeDrawer(GravityCompat.START);
+                if (drawer != null) drawer.closeDrawer(GravityCompat.START);
                 return true;
             });
         }
@@ -96,12 +95,7 @@ public class DashboardFragment extends Fragment {
 
         // View All - navigate to full list
         View viewAll = view.findViewById(R.id.btn_view_all);
-        if (viewAll != null) viewAll.setOnClickListener(v -> {
-            requireActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, new AllSnacksFragment())
-                    .addToBackStack(null)
-                    .commit();
-        });
+        if (viewAll != null) viewAll.setOnClickListener(v -> navigateToAllSnacks());
 
         // Observe ViewModel data (updates are posted by repository)
         vm.totalCalories.observe(getViewLifecycleOwner(), total -> {
