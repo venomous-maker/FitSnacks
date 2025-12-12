@@ -87,13 +87,13 @@ public class AddSnackFragment extends Fragment {
             SnackEntry entry = new SnackEntry(name, calories, portion, date);
             // insert with callback to receive assigned id
             vm.insertSnack(entry, id -> {
-                // Show Snackbar with Undo
-                View root = requireActivity().findViewById(android.R.id.content);
-                if (root == null) root = view;
-                Snackbar.make(root, "Snack saved", Snackbar.LENGTH_LONG)
-                        .setAction("Undo", undoV -> vm.deleteSnack(id))
-                        .show();
-            });
+                 // Show Snackbar with Undo
+                 View root = requireActivity().findViewById(android.R.id.content);
+                 if (root == null) root = view;
+                 Snackbar.make(root, "Snack saved", Snackbar.LENGTH_LONG)
+                         .setAction("Undo", undoV -> vm.deleteSnack(id))
+                         .show();
+             });
 
             Toast.makeText(getContext(), "Snack saved", Toast.LENGTH_SHORT).show();
             requireActivity().getSupportFragmentManager().popBackStack();
