@@ -1,3 +1,6 @@
+// Name : pooja bandari
+// Course: open - source intelligent device (ITMD- 555)
+// Project : FitSnacks
 package com.example.fitsnacks.data;
 
 import android.content.Context;
